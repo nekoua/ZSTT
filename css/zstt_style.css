@@ -5,3 +5,7 @@
 .card-panel {
  color: #424242;
 }
+.btn_marg {
+	margin-bottom: 10px;
+	background: red;
+}
