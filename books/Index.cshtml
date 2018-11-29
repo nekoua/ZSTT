@@ -1,0 +1,126 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/css/materialize.min.css" media="screen,projection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST ALLERT MESSAGE</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Page Content goes here -->
+        <h1>Test Asp.Net Core output to MaterializeCSS</h1>
+
+        <div class="row">
+            <form id="LogForm" class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="date_start" type="text" class="datepicker">
+                        <label for="date_start">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="date_finish" type="text" class="datepicker">
+                        <label for="date_finish">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="time_start" type="text" class="timepicker">
+                        <label for="time_start">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="time_finish" type="text" class="timepicker">
+                        <label for="time_finish">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <div class="input-field col s12">
+                            <select multiple>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Materialize Multiple Select</label>
+                        </div>
+                    </div>
+                    <div class="input-field col s6">
+                        <div class="switch">
+                            <label>
+                                Off
+                                <input type="checkbox">
+                                <span class="lever"></span>
+                                On
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn waves-effect">Get Logs</button>
+            </form>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script type="text/javascript" src="~/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="~/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.timepicker').timepicker();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+    <script>
+        $("#LogForm").submit(function (event) {
+            event.preventDefault();
+
+            //DateStart
+            //DateFinish
+            //TimeStart
+            //TimeFinish
+            //LogLevel
+            //AllLogs
+
+            $.ajax({
+                url: "/home/GetLogs",
+                contentType: 'application/json; charset=utf-8',
+                method: "POST",
+                data: JSON.stringify({
+                    DateStart: "1qw1",
+                    DateFinish: "2qw2",
+                    TimeStart: "3qw3",
+                    TimeFinish: "4qw4",
+                    LogLevel: "5qw5",
+                    AllLogs: "6qw6"
+                }),
+                success: function (result) {
+                    console.log('Sucess...');
+                    console.log(result);
+
+
+                }
+            })
+
+        });
+    </script>
+</body>
+</html>
